@@ -1,0 +1,4 @@
+build/*
+config/
+app-client/js/registerServiceWorker.js
+node_modules/*
