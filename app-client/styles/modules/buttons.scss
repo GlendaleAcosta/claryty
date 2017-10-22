@@ -3,3 +3,34 @@
   cursor: pointer;
   transition: 0.1s ease-in-out;
 }
+
+.tab-btn {
+  cursor: pointer;
+  border-radius: 0;
+  border-left: 2px solid white !important;
+  background-color: #273c7a;
+  border: 1px solid #273c7a;
+  border-bottom: 0;
+  border-top: 0;
+  outline: none;
+  // border-color: #fff;
+  &:first-child  {
+    border-left: 0 !important;
+  }
+}
+
+.col-title {
+  background-color: #3ac75e;
+}
+
+// tr {
+  td {
+    // &::nth-child(2) {
+    // background-color: white !important;
+    // }
+  }
+// }
+
+.space-between {
+  justify-content: space-between;
+}

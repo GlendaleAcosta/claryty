@@ -15,10 +15,11 @@ class App extends Component {
       <div>
         <Route path={'*'} component={NavbarContainer} />
         <Route exact path={'/'} component={HomeContainer} />
-        <Route path={'/drug/:drug'} component={DrugPageContainer} />
+        <Route path="/drug/:drug" component={DrugPageContainer} />
       </div>
     );
   }
 }
+// <Route path={'/drug/:drug'} component={DrugPageContainer} />
 
 export default App;

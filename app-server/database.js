@@ -1,4 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
+const Promise = require('bluebird');
 
 const db = new sqlite3.Database('./results.db', ((err) => {
   if (err) {
@@ -6,6 +7,7 @@ const db = new sqlite3.Database('./results.db', ((err) => {
   }
   console.log('Connected to the in-memory SQlite database.');
 }));
+
 
 module.exports = db;
 

@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import pills from 'images/medical.png';
-// import axios from 'axios';
 import DrugRiskTable from 'components/Drugs/DrugRiskTable';
+import DrugInfo from 'components/Drugs/DrugInfo';
+// import axios from 'axios';
+import { connect } from 'react-redux';
+import { getTop10Reactions } from 'actions/drugActions';
 
 class DrugPageContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    // this.testGetRequest = this.testGetRequest.bind(this);
+    const drugName = props.match.params.drug;
+    props.dispatch(getTop10Reactions('15', drugName));
   }
 
-  // testGetRequest() {
-  //   axios.get('/api/drug')
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-
   render() {
+    const { match } = this.props;
     return (
       <div className="full-screen">
         <div className="container pt-6">
@@ -31,20 +25,11 @@ class DrugPageContainer extends Component {
               <img className="drug-pills-img" src={pills} alt="img" />
             </div>
             <div className="col-md-5 d-flex flex-column justify-content-center">
-              <h1 className="text-white lato">Lunesta</h1>
-              <p className="text-white lato">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
-              </p>
+              <h1 className="text-white lato">{match.params.drug}</h1>
+              <DrugInfo {...this.props} />
               <a
                 className="lato text-white"
-                href="https://www.webmd.com/drugs/2/drug-92350/lunesta-oral/details"
+                href={`https://en.wikipedia.org/wiki/${match.params.drug}`}
               >
                 ...more info
               </a>
@@ -53,11 +38,16 @@ class DrugPageContainer extends Component {
           </div>
 
           <div className="divider" />
-          <DrugRiskTable />
+          <DrugRiskTable {...this.props} />
         </div>
       </div>
     );
   }
 }
 
-export default DrugPageContainer;
+function mapStateToProps(state) {
+  return {
+    drugReducer: state.drugReducer,
+  };
+}
+export default connect(mapStateToProps)(DrugPageContainer);
