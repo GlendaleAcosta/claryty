@@ -38,6 +38,7 @@ class DrugPageContainer extends Component {
           </div>
 
           <div className="divider" />
+
           <DrugRiskTable {...this.props} />
         </div>
       </div>

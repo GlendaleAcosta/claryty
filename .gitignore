@@ -22,3 +22,6 @@ yarn-error.log*
 
 app-server/results.db
 results.db
+healthpp.db
+healpp.db-shm
+healpp.db-wal

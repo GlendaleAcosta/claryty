@@ -95,6 +95,7 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       styles: path.resolve(paths.appSrc, 'styles/'),
       images: path.resolve(paths.appSrc, 'images/'),
+      file: path.resolve(paths.appSrc, 'file/'),
       actions: path.resolve(paths.appSrc, 'js/actions'),
       components: path.resolve(paths.appSrc, 'js/components'),
       containers: path.resolve(paths.appSrc, 'js/containers'),

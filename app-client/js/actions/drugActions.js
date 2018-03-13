@@ -8,9 +8,12 @@ export function getTop10Reactions(year, drugName) {
     drugName,
   })
     .then((response) => {
-      // console.log(response);
       return {
         type: 'GET_10_REACTIONS',
+        // payload: {
+        //   top10Reactions: response.data,
+        //   year,
+        // },
         payload: response.data,
       };
     })

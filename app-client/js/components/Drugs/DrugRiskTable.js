@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { getTop10Reactions } from 'actions/drugActions';
 
+// const file = require('files/Consumer_safety_model.pdf');
+
 class DrugRiskTable extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ class DrugRiskTable extends Component {
           <th scope="row">{index + 1}</th>
           <td>{reaction.reaction || reaction.pt}</td>
           <td>{reaction.count || reaction.Count}</td>
-          <td><a className="text-white" href="/files/Consumer_safety_model.tiff" >Risk</a></td>
+          <td><a className="text-white" href="../../../files/Consumer_safety_model.pdf">Risk</a></td>
         </tr>
       );
     });
@@ -32,6 +34,7 @@ class DrugRiskTable extends Component {
     return (
       <div className="row">
         <p className="text-white lead col-md-12">Top 10 risks for {match.params.drug}</p>
+        <p className="text-white">{}</p>
         <div className="col-md-12">
           <button
             onClick={() => this.changeYear('15')}
