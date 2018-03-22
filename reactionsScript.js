@@ -19,6 +19,7 @@ async function processArray(limit, offset) {
   let lastDrug = '8==D';
   let r = {};
 
+  // n
   for (let drug of drugs) {
     i++;
     console.log(`${i} / 2425883`);
