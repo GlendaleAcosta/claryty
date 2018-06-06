@@ -1,20 +1,18 @@
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
+const db = new Database('./healthdb_test.db', {fileMustExist: true});
 
 
 exports.postDrug = (req, res) => {
-  const db = new sqlite3.Database('./results.db', ((err) => {
-    if (err) {
-      return console.error(err.message);
-    }
-  }));
-  let drugName = req.body.params;
+  let drugName = req.body.drugName;
+  console.log(drugName);
   drugName = drugName.toUpperCase();
-  db.serialize(() => {
-    db.get(`SELECT info FROM DRUGINFO WHERE drugname = "${drugName}";`,
-      (err, drugInfo) => {
-        console.log(drugInfo);
-        res.json({ drugInfo });
-      });
+
+  const query = db.prepare(`SELECT * FROM DRUG2017 WHERE drugname = "${drugName}"`);
+  const row = query.get();
+
+  res.json({
+    drugName: row.drugname,
+    genericName: row.prod_ai,
+    primaryid: row.primaryid,
   });
-  db.close();
 };

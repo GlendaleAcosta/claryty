@@ -18,10 +18,12 @@ app.use(express.static(path.join(__dirname, '../build')));
 const drugCtrl = require('./controllers/drugCtrl');
 const reactionCtrl = require('./controllers/reactionCtrl');
 const deathCtrl = require('./controllers/deathCtrl');
+const adverseEffectsCtrl = require('./controllers/adverseEffectsCtrl');
 
 // Routes
 app.post('/api/death', deathCtrl.postDeath);
-app.post('/api/drug-info', drugCtrl.postDrug);
+app.post('/api/drug', drugCtrl.postDrug);
+app.post('/api/adverse-effects', adverseEffectsCtrl.postAdverseEffects);
 app.post('/api/reactions', reactionCtrl.postReaction);
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
